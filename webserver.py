@@ -9,7 +9,7 @@ import toml
 from aiohttp.web import Application, AppRunner, TCPSite
 from aiohttp_jinja2 import setup as jinja_setup
 from aiohttp_session import setup as session_setup
-from aiohttp_session.cookie_storage import EncryptedCookieStorage as ECS, SimpleCookieStorage
+from aiohttp_session.cookie_storage import EncryptedCookieStorage as ECS
 from jinja2 import FileSystemLoader
 
 import website
@@ -43,10 +43,10 @@ app.router.add_routes(website.backend_routes)
 app.router.add_static('/static', os.getcwd() + '/website/static', append_version=True)
 
 # Add middlewares
-if args.debug:
-    session_setup(app, SimpleCookieStorage(max_age=1_000_000))
-else:
-    session_setup(app, ECS(os.urandom(32), max_age=1_000_000))
+# if args.debug:
+#     session_setup(app, SimpleCookieStorage(max_age=1_000_000))
+# else:
+session_setup(app, ECS(os.urandom(32), max_age=1_000_000))
 jinja_setup(app, loader=FileSystemLoader(os.getcwd() + '/website/templates'))
 
 # Add our connections and their loggers
@@ -70,7 +70,7 @@ if __name__ == '__main__':
 
     # Connect the bot
     logger.info("Logging in bot")
-    loop.run_until_complete(app['bot'].login(app['config']['token']))
+    loop.run_until_complete(app['bot'].login(app['config']['authorization_tokens']['bot']))
 
     # Connect the database
     if app['config'].get('database', {}).get('enabled', True):

@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aiko</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        body {
+            font-family: Helvetica, sans-serif;
+            background: #111;
+            color: #eee;
+        }
+        #content {
+            max-width: 750px;
+            margin: auto;
+            padding: 10px;
+        }
+        a, a:visited {
+            color: pink;
+        }
+        .clientProject {
+            margin-bottom: 10px;
+        }
+        .client {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .name {
+            font-weight: bold;
+        }
+        .description {
+            list-style: none;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
 
+        <div name="title" class="rainbowText">
+            <h1>G'day <span class="rainbowText">cunts</span>! It's me, fuckin <span class="rainbowText">Aiko</span>!</h1>
+        </div>
+
+        <div name="content">
+            <p>I love to procrastinate by writing code that does shit.</p>
+            <p>You can check out the shit i've coded if I remembered to put them on github.</p>
+        </div>
+
+        <div name="links">
+            <h3>Some cool links to check out!</h3>
+            <ul>
+                <li><a href="https://github.com/ProfessionalOakTree">My Github Page</a></li>
+                <li><a href="https://gist.github.com/ProfessionalOakTree/">My Github Gist Page</a></li>
+                <li><a href="https://discord.gg/vfl">Voxel Fox Ltd Discord</a></li>
+            </ul>
+        </div>
+
+        <div name="Portfolio">
+            <h3>Coding related things i've done for people.</h3>
+            <ul>
+
+                <li class="project"><span class="client">User: Kae</span>
+                    <ul class="clientProject">
+                        <li class="name">Moderation Cog for Honey.</li>
+                        <li class="name">Numerous pull requests for code fixes and feature implements.</li>
+                    </ul>
+                </li>
+
+                <li class="project"><span class="client">User: Holly</span>
+                    <ul class="clientProject">
+                        <li class="name">A private 1 on 1 session bot. (Therapy Bot/Penguin Powered)</li>
+                        <li class="description">The bot that allows you to anonymously contact a member of the bot's support staff when you are feeling down or just need someone to talk to.</li>
+                    </ul>
+                </li>
+
+                <li class="project"><span class="client">Guild: Itty Bitty Kitty Committee - Member Count: ~400</span>
+                    <ul class="clientProject">
+                        <li class="name">A anonymous confession bot.</li>
+                        <li class="description">I made this bot which worked really well and auto filter out @everone and @here.<br>I made it because other free bots were capped at a limited amount of confessions and also to grow my knowledge in Python.</li>
+                    </ul>
+                    <ul class="clientProject">
+                        <li class="name">A moderation/utility bot.</li>
+                        <li class="description">As features that the management team of the guild were not available in public bots.</li>
+                    </ul>
+                </li>
+                <li class="project"><span class="client">Guild: Social Degenerates - Member Count: ~30k</span>
+                    <ul class="clientProject">
+                        <li class="name">Russian Roulette.</li>
+                        <li class="description">This was a custom request by the owner of the server. It was a kick command that had a 1 in 6 chance of kicking a user.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        text_hue = 0
+        setInterval(rainbowText, 50);
+
+        function rainbowText() {
+            var elementList = document.getElementsByClassName("rainbowText");
+            for(var i = 0; i < elementList.length; i++) {
+                var hsl = "hsl(" + (text_hue + ((360 / elementList.length) * i)) + ", 80%, 60%)", num = text_hue + 5;
+                text_hue = num > 360 ? 0 : num, elementList[i].style.color = hsl;
+            }
+        };
+    </script>
+</body>
+</html>

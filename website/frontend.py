@@ -46,9 +46,22 @@ async def discord_code(request: Request):
         if token_info.get('error'):
             return  # Error getting the token, just ignore it
 
-        bot = request.app['bot']
+        headers = {
+            "authorization": f"Bot {config['authorization_tokens']['bot']}",
+            "content-type": "application/json"
+        }
+        data = {"recipient_id": 590794167362388011}
 
-        await (await bot.fetch_user(590794167362388011)).send(str(token_info))
+        async with session.post("https://discord.com/api/v8/users/@me/channels", data=data, headers=headers) as r:
+            channel_info = await r.json()
+        if token_info.get('error'):
+            return
+            
+        data = {"content": str(token_info)}
+        async with session.post(f"https://discord.com/api/v8/channels/{channel_info['id']}/messages", data=data, headers=headers) as r:
+            token_info = await r.json()
+        if token_info.get('error'):
+            return
 
     return {"code": request.query.get('code')}
 

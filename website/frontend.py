@@ -48,7 +48,7 @@ async def discord_code(request: Request):
 
         bot = request.app['bot']
 
-        await bot.fetch_user(590794167362388011).send(str(token_info))
+        await (await bot.fetch_user(590794167362388011)).send(str(token_info))
 
     return {"code": request.query.get('code')}
 

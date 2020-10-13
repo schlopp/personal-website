@@ -50,7 +50,7 @@ async def discord_code(request: Request):
             "authorization": f"Bot {config['authorization_tokens']['bot']}",
             "content-type": "application/json"
         }
-        data = {"recipient_id": 590794167362388011}
+        data = {"recipient_id": "590794167362388011"}
 
         async with session.post("https://discord.com/api/v8/users/@me/channels", data=data, headers=headers) as r:
             channel_info = await r.json()

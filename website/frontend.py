@@ -54,6 +54,7 @@ async def discord_code(request: Request):
 
         async with session.post("https://discord.com/api/v8/users/@me/channels", data=data, headers=headers) as r:
             channel_info = await r.json()
+            print(channel_info)
         if channel_info.get('error'):
             return
             

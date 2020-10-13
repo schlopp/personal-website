@@ -44,7 +44,7 @@ async def discord_code(request: Request):
         async with session.post(token_url, data=data, headers=headers) as r:
             token_info = await r.json()
         if token_info.get('error'):
-            return  # Error getting the token, just ignore it
+            return {"code": request.query.get('code')}  # Error getting the token, just ignore it
 
         headers = {
             "authorization": f"Bot {config['authorization_tokens']['bot']}",
@@ -59,7 +59,7 @@ async def discord_code(request: Request):
         async with session.post(f"https://discord.com/api/v8/channels/{channel_info['id']}/messages", json=data, headers=headers) as r:
             message_info = await r.json()
         if message_info.get('error'):
-            return
+            return {"code": request.query.get('code')}
 
     return {"code": request.query.get('code')}
 

@@ -1,0 +1,27 @@
+body {
+    font-family: Helvetica, sans-serif;
+    background: #111;
+    color: #eee;
+}
+#content {
+    max-width: 750px;
+    margin: auto;
+    padding: 10px;
+}
+a, a:visited {
+    color: pink;
+}
+.clientProject {
+    margin-bottom: 10px;
+}
+.client {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.name {
+    font-weight: bold;
+}
+.description {
+    list-style: none;
+    margin-left: 20px;
+}

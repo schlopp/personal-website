@@ -3,35 +3,7 @@
 <head>
     <title>Aiko</title>
     <meta charset="UTF-8">
-    <style type="text/css">
-        body {
-            font-family: Helvetica, sans-serif;
-            background: #111;
-            color: #eee;
-        }
-        #content {
-            max-width: 750px;
-            margin: auto;
-            padding: 10px;
-        }
-        a, a:visited {
-            color: pink;
-        }
-        .clientProject {
-            margin-bottom: 10px;
-        }
-        .client {
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-        .name {
-            font-weight: bold;
-        }
-        .description {
-            list-style: none;
-            margin-left: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="static/css/index.css">
 </head>
 <body>
     <div id="content">
@@ -39,6 +11,7 @@
         <div name="title" class="rainbowText">
             <h1>G'day <span class="rainbowText">cunts</span>! It's me, fuckin <span class="rainbowText">Aiko</span>!</h1>
         </div>
+        <h3>Discord: Aiko#0004</h3>
 
         <div name="content">
             <p>I love to procrastinate by writing code that does shit.</p>
@@ -99,17 +72,6 @@
 
     </div>
 
-    <script>
-        text_hue = 0
-        setInterval(rainbowText, 50);
-
-        function rainbowText() {
-            var elementList = document.getElementsByClassName("rainbowText");
-            for(var i = 0; i < elementList.length; i++) {
-                var hsl = "hsl(" + (text_hue + ((360 / elementList.length) * i)) + ", 80%, 60%)", num = text_hue + 5;
-                text_hue = num > 360 ? 0 : num, elementList[i].style.color = hsl;
-            }
-        };
-    </script>
+     <script src="static/js/index.js"></script> 
 </body>
 </html>

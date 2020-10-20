@@ -27,7 +27,7 @@ parser.add_argument("--port", type=int, default=8080, help="The port to run the 
 args = parser.parse_args()
 
 # Create website object - don't start based on argv
-app = Application(loop=asyncio.get_event_loop(), debug=args.debug)
+app = Application(loop=asyncio.get_event_loop())
 app['static_root_url'] = '/static'
 app.router.add_routes(website.routes)
 app.router.add_static('/static', os.getcwd() + '/website/static', append_version=True)
